@@ -5,32 +5,28 @@ Summary(ru.UTF-8):	GtkHTML - это библиотека рендеринга/р
 Summary(uk.UTF-8):	GtkHTML - це бібліотека рендерингу/редагування HTML
 Summary(zh_CN.UTF-8):	GtkHTML 库
 Name:		gtkhtml
-Version:	4.8.5
+Version:	3.32.2
 Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkhtml/4.8/%{name}-%{version}.tar.xz
-# Source0-md5:	a146d2ffdf52f6aa25badb75436b6f4d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtkhtml/3.32/%{name}-%{version}.tar.bz2
+# Source0-md5:	3e1a1d56beef147aa0a95e5ebbf61c8c
+BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf >= 2.58
-BuildRequires:	automake >= 1:1.11
-BuildRequires:	cairo-devel >= 1.10.0
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	enchant-devel >= 1.1.7
 BuildRequires:	gettext-tools
-BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.2.0
+BuildRequires:	gnome-icon-theme >= 2.22.0
+BuildRequires:	gtk+2-devel >= 2:2.20.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.49
 BuildRequires:	libsoup-devel >= 2.26.0
-BuildRequires:	libtool >= 2:2.2
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
-BuildRequires:	tar >= 1:1.22
-BuildRequires:	xorg-proto-xproto-devel
-BuildRequires:	xz
-Requires:	cairo >= 1.10.0
 Requires:	enchant >= 1.1.7
-Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.2.0
+Requires:	gnome-icon-theme >= 2.22.0
+Requires:	gtk+2 >= 2:2.20.0
 Obsoletes:	gal
 Obsoletes:	libgtkhtml20
 # sr@Latn vs. sr@latin
@@ -71,9 +67,9 @@ Summary(uk.UTF-8):	Файли, необхідні для розробки про
 Summary(zh_CN.UTF-8):	GtkHTML开发库
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	cairo-devel >= 1.10.0
+Requires:	GConf2-devel >= 2.24.0
 Requires:	enchant-devel >= 1.1.7
-Requires:	gtk+3-devel >= 3.2.0
+Requires:	gtk+2-devel >= 2:2.20.0
 Requires:	iso-codes >= 0.49
 Obsoletes:	gal-devel
 Obsoletes:	libgtkhtml20-devel
@@ -134,6 +130,7 @@ Bibliotecas estáticas para desenvolver aplicações GtkHTML.
 %{__automake}
 %configure \
 	--enable-static \
+	--disable-deprecated-warning-flags \
 	--disable-silent-rules
 %{__make}
 
@@ -145,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
-%find_lang gtkhtml-4.0
+%find_lang gtkhtml-3.14
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -155,23 +152,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f gtkhtml-4.0.lang
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS ChangeLog NEWS README TODO
+%doc AUTHORS BUGS ChangeLog NEWS README* TODO
 %attr(755,root,root) %{_bindir}/gtkhtml-editor-test
-%attr(755,root,root) %{_libdir}/libgtkhtml-4.0.so.*.*.*
-%attr(755,root,root) %{_libdir}/libgtkhtml-editor-4.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgtkhtml-4.0.so.0
-%attr(755,root,root) %ghost %{_libdir}/libgtkhtml-editor-4.0.so.0
-%{_datadir}/%{name}-4.0
+%attr(755,root,root) %{_libdir}/libgtkhtml-3.14.so.*.*.*
+%attr(755,root,root) %{_libdir}/libgtkhtml-editor-3.14.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgtkhtml-3.14.so.19
+%attr(755,root,root) %ghost %{_libdir}/libgtkhtml-editor-3.14.so.0
+%{_datadir}/%{name}-3.14
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgtkhtml-4.0.so
-%attr(755,root,root) %{_libdir}/libgtkhtml-editor-4.0.so
-%{_includedir}/libgtkhtml-4.0
-%{_pkgconfigdir}/libgtkhtml-4.0.pc
-%{_pkgconfigdir}/gtkhtml-editor-4.0.pc
+%attr(755,root,root) %{_libdir}/libgtkhtml-3.14.so
+%attr(755,root,root) %{_libdir}/libgtkhtml-editor-3.14.so
+%{_includedir}/libgtkhtml-3.14
+%{_pkgconfigdir}/libgtkhtml-3.14.pc
+%{_pkgconfigdir}/gtkhtml-editor-3.14.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libgtkhtml-4.0.a
-%{_libdir}/libgtkhtml-editor-4.0.a
+%{_libdir}/libgtkhtml-3.14.a
+%{_libdir}/libgtkhtml-editor-3.14.a
