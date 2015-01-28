@@ -21,7 +21,7 @@ BuildRequires:	gtk+2-devel >= 2:2.20.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes >= 0.49
 BuildRequires:	libsoup-devel >= 2.26.0
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	enchant >= 1.1.7
@@ -153,7 +153,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f gtkhtml-4.0.lang
+%files -f gtkhtml-3.14.lang
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README* TODO
 %attr(755,root,root) %{_bindir}/gtkhtml-editor-test
