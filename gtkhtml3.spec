@@ -145,6 +145,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/{gtkhtml-editor-test,gtkhtml3-editor-test}
+
 %find_lang gtkhtml-3.14
 
 %clean
@@ -156,7 +158,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f gtkhtml-3.14.lang
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README* TODO
-%attr(755,root,root) %{_bindir}/gtkhtml-editor-test
+%attr(755,root,root) %{_bindir}/gtkhtml3-editor-test
 %attr(755,root,root) %{_libdir}/libgtkhtml-3.14.so.*.*.*
 %attr(755,root,root) %{_libdir}/libgtkhtml-editor-3.14.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgtkhtml-3.14.so.19
